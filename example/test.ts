@@ -6,7 +6,7 @@ const api = renovatioAppApi({
 })
 
 api.pages.create({
-  formatId:2,
+  formatId:1,
   title:'prova'
 }).then(v => console.log(v)).catch(e => console.log(e))
 
