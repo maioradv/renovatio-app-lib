@@ -1,0 +1,22 @@
+{
+  "name": "renovatio-app-lib",
+  "version": "1.0",
+  "description": "JS lib for Renovatio App Api",
+  "repository": "https://github.com/maioradv/renovatio-app-lib.git",
+  "author": "Maior ADV Srl",
+  "license": "MIT",
+  "private": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "dependencies": {
+    "@types/node": "^20.11.18",
+    "axios": "^1.6.7",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}
