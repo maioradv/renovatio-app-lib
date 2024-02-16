@@ -12,7 +12,7 @@ export class RestApiError extends RenovatioError {
   constructor(e:Error|AxiosError) {
     let message = e.message
     if(e instanceof AxiosError) {
-      message = `${e.response?.data?.message} [${e.response?.data?.code}]`
+      message = e?.response?.data ? `${e.response.data?.message} [${e.response.data?.code}]` : e.message
     }
     super(`Rest Api Error: ${message}`)
   }
