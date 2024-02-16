@@ -1,6 +1,6 @@
 {
   "name": "renovatio-app-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JS lib for Renovatio App Api",
   "repository": "https://github.com/maioradv/renovatio-app-lib.git",
   "author": "Maior ADV Srl",
