@@ -7,13 +7,36 @@ const api = renovatioAppApi({
 
 api.pages.create({
   formatId:1,
-  title:'prova'
+  title:'test title',
+  description:'test description',
+  metafields:[
+    {
+      key:'year',
+      value:'2024'
+    },
+    {
+      key:'model',
+      value:'t-shirt'
+    }
+  ],
+  translations:[
+    {
+      key:'title',
+      value:'titolo',
+      locale:'it'
+    },
+    {
+      key:'model',
+      value:'maglietta',
+      locale:'it'
+    }
+  ]
 }).then(v => console.log(v)).catch(e => console.log(e))
 
 api.pages.findAll({
-  sorting:{
-    id:'asc'
-  }
+  /*sorting:{
+    id:'desc'
+  }*/
 }).then(v => console.log(v))
 
 /*api.pages.findOne(1).then(v => console.log(v.slug))

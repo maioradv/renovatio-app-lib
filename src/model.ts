@@ -1,4 +1,4 @@
-import { Axios, AxiosError } from "axios"
+import { Axios } from "axios"
 import { RestApiError } from "./error"
 
 export class ModuleRestApi {
@@ -9,7 +9,8 @@ export class ModuleRestApi {
       const response = await this.client.request({
         method:method,
         url:path,
-        data: data ?? null
+        data: method !== 'get' ? data ?? null : null,
+        params: method === 'get' ? data ?? null : null
       })
       return response.data as Res
     }
