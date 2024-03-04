@@ -1,4 +1,6 @@
-import { Metafields, Translation, WithRequired } from "../types";
+import { PaginatedQueryDto } from "../core/dto/pagination";
+import { Sorting, SortingDto } from "../core/dto/sorting";
+import { Metafield, Translation, WithRequired } from "../types";
 
 export type Page = {
   id: number;
@@ -6,7 +8,7 @@ export type Page = {
   slug: string;
   title: string;
   description: string|null;
-  metafields: Metafields;
+  metafields: Metafield[];
   translations: Translation[];
   createdAt: Date;
   updatedAt: Date;
@@ -16,3 +18,12 @@ type PartialPage = Partial<Omit<Page,'id'|'slug'|'createdAt'|'updatedAt'>>
 
 export type CreatePage = PartialPage & WithRequired<PartialPage,'title'|'formatId'>
 export type UpdatePage = PartialPage
+
+export type SortingPageDto = SortingDto & {
+  title?:Sorting,
+  formatId?:Sorting
+}
+
+export type QueryPageDto = PaginatedQueryDto & {
+  sorting?:SortingPageDto
+}

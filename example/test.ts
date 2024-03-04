@@ -10,9 +10,13 @@ api.pages.create({
   title:'prova'
 }).then(v => console.log(v)).catch(e => console.log(e))
 
-/*api.pages.findAll().then(v => console.log(v))
+api.pages.findAll({
+  sorting:{
+    id:'asc'
+  }
+}).then(v => console.log(v))
 
-api.pages.findOne(1).then(v => console.log(v.slug))
+/*api.pages.findOne(1).then(v => console.log(v.slug))
 
 api.pages.update(1,{
   title:'Test ASD ASD'

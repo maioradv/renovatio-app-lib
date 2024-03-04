@@ -11,7 +11,10 @@ export enum RenovatioHeader {
 
 export type WithRequired<T, K extends keyof T> = T & { [P in K]-?: T[P] }
 
-export type Metafields = Record<string,any>
+export type Metafield = {
+  key:string,
+  value:string
+}
 export type Translation = {
   key:string,
   value:string,
