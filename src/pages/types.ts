@@ -1,5 +1,6 @@
-import { PaginatedQueryDto } from "../core/dto/pagination";
+import { DefaultClausesDto, NumberClause, StringClause } from "../core/dto/clauses";
 import { Sorting, SortingDto } from "../core/dto/sorting";
+import { QueryParamsDto, SortingParamsDto, WhereClausesDto } from "../core/utils/queryParams";
 import { Metafield, Translation, WithRequired } from "../types";
 
 export type Page = {
@@ -19,11 +20,16 @@ type PartialPage = Partial<Omit<Page,'id'|'slug'|'createdAt'|'updatedAt'>>
 export type CreatePage = PartialPage & WithRequired<PartialPage,'title'|'formatId'>
 export type UpdatePage = PartialPage
 
-export type SortingPageDto = SortingDto & {
+export type SortingPageDto = SortingParamsDto<{
   title?:Sorting,
   formatId?:Sorting
-}
+}>
 
-export type QueryPageDto = PaginatedQueryDto & {
-  sorting?:SortingPageDto
-}
+export type ClausesPageDto = WhereClausesDto<{
+  slug?:StringClause,
+  title?:StringClause,
+  description?:StringClause,
+  formatId?:NumberClause,
+}>
+
+export type QueryPageDto = QueryParamsDto<SortingPageDto,ClausesPageDto>

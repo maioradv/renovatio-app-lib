@@ -16,3 +16,7 @@ export type PaginatedDto<T> = {
   data: T[],
   meta: PaginatedMetaDto
 }
+
+export function pagination(args:PaginatedQueryDto): Record<string,any> {
+  return args
+}

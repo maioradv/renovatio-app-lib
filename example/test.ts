@@ -34,9 +34,12 @@ api.pages.create({
 }).then(v => console.log(v)).catch(e => console.log(e))
 
 api.pages.findAll({
-  /*sorting:{
+  where:{
+    id:[4,2],
+  },
+  sorting:{
     id:'desc'
-  }*/
+  }
 }).then(v => console.log(v))
 
 /*api.pages.findOne(1).then(v => console.log(v.slug))

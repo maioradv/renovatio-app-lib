@@ -4,7 +4,7 @@ import { RestApiError } from "./error"
 export class ModuleRestApi {
   constructor(private client:Axios){}
 
-  async _call<Res,Req = {}>(method:CallMethod,path:string,data?:Req): Promise<Res> {
+  async _call<Res,Req = Record<string,any>>(method:CallMethod,path:string,data?:Req): Promise<Res> {
     try {
       const response = await this.client.request({
         method:method,

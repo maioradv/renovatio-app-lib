@@ -1,4 +1,5 @@
 import { PaginatedDto } from "../core/dto/pagination";
+import { queryParams } from "../core/utils/queryParams";
 import { IRestApiModule, ModuleRestApi } from "../model";
 import { Page, CreatePage, UpdatePage, QueryPageDto } from "./types";
 
@@ -8,7 +9,7 @@ export default class Pages extends ModuleRestApi implements IRestApiModule {
   }
 
   findAll(args:QueryPageDto = {}): Promise<PaginatedDto<Page>> {
-    return this._call<PaginatedDto<Page>,QueryPageDto>('get','/pages',args)
+    return this._call<PaginatedDto<Page>>('get','/pages',queryParams(args))
   } 
 
   findOne(id:number): Promise<Page|null> {
