@@ -36,11 +36,14 @@ const api = renovatioAppApi({
 api.settings.findAll().then(v => console.log(v))
 
 /*api.pages.findAll({
+  pagination: {
+
+  },
   where:{
     id:[4,2],
   },
   sorting:{
-    id:'desc'
+    id:'desc',
   }
 }).then(v => console.log(v))*/
 

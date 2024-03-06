@@ -24,8 +24,10 @@ export type SortingSettingDto = SortingParamsDto<{
 
 export type ClausesSettingDto = WhereClausesDto<{
   name?:StringClause,
+  nameContains?:string|undefined,
   value?:StringClause,
-  description?:StringClause,
+  descriptionContains?:string|undefined,
+  valueContains?:string|undefined
 }>
 
 export type QuerySettingDto = QueryParamsDto<SortingSettingDto,ClausesSettingDto>
