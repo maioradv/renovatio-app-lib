@@ -1,7 +1,7 @@
 import { Axios } from "axios"
 import { RestApiError } from "./error"
 
-export class ModuleRestApi {
+export class RestApiModule {
   constructor(private client:Axios){}
 
   async _call<Res,Req = Record<string,any>>(method:CallMethod,path:string,data?:Req): Promise<Res> {
@@ -20,11 +20,11 @@ export class ModuleRestApi {
   }
 }
 
-export interface IRenovatioAppApi {
+export interface RenovatioAppApiI {
   auth:() => void,
 }
 
-export interface IRestApiModule {
+export interface RestApiModuleI {
   create:(args:unknown) => Promise<unknown>,
   findAll:(args?:unknown) => Promise<unknown>,
   findOne:(id:number,args?:unknown) => Promise<unknown>,

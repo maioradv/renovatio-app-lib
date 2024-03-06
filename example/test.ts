@@ -33,6 +33,8 @@ api.pages.create({
   ]
 }).then(v => console.log(v)).catch(e => console.log(e))
 
+api.languages.findAll().then(v => console.log(v))
+
 api.pages.findAll({
   where:{
     id:[4,2],

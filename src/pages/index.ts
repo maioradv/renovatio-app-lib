@@ -1,9 +1,9 @@
 import { PaginatedDto } from "../core/dto/pagination";
 import { queryParams } from "../core/utils/queryParams";
-import { IRestApiModule, ModuleRestApi } from "../model";
+import { RestApiModuleI, RestApiModule } from "../model";
 import { Page, CreatePage, UpdatePage, QueryPageDto } from "./types";
 
-export default class Pages extends ModuleRestApi implements IRestApiModule {
+export default class Pages extends RestApiModule implements RestApiModuleI {
   create(data:CreatePage): Promise<Page> {
     return this._call<Page>('post','/pages',data)
   }

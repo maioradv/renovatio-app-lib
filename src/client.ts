@@ -2,10 +2,10 @@ import axios, { Axios } from "axios";
 import { ApiConfigs, RenovatioAppApiConfigs, validateConfigs } from "./config";
 import { RenovatioHeader } from "./types";
 import Pages from "./pages";
-import { IRenovatioAppApi } from "./model";
+import { RenovatioAppApiI } from "./model";
 import Languages from "./languages";
 
-export default class RenovatioAppApi implements IRenovatioAppApi
+export default class RenovatioAppApi implements RenovatioAppApiI
 {
   protected client:Axios;
   protected configApi:ApiConfigs
