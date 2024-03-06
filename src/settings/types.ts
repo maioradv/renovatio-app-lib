@@ -1,0 +1,31 @@
+import { StringClause } from "../core/dto/clauses";
+import { Sorting } from "../core/dto/sorting";
+import { QueryParamsDto, SortingParamsDto, WhereClausesDto } from "../core/utils/queryParams";
+import { Translation, WithRequired } from "../types";
+
+export type Setting = {
+  id: number;
+  name: string;
+  value: string|null;
+  description: string|null;
+  translations: Translation[];
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+type PartialSetting = Partial<Omit<Setting,'id'|'createdAt'|'updatedAt'>>
+
+export type CreateSetting = PartialSetting & WithRequired<PartialSetting,'name'>
+export type UpdateSetting = PartialSetting
+
+export type SortingSettingDto = SortingParamsDto<{
+  name?:Sorting,
+}>
+
+export type ClausesSettingDto = WhereClausesDto<{
+  name?:StringClause,
+  value?:StringClause,
+  description?:StringClause,
+}>
+
+export type QuerySettingDto = QueryParamsDto<SortingSettingDto,ClausesSettingDto>

@@ -4,6 +4,7 @@ import { RenovatioHeader } from "./types";
 import Pages from "./pages";
 import { RenovatioAppApiI } from "./model";
 import Languages from "./languages";
+import Settings from "./settings";
 
 export default class RenovatioAppApi implements RenovatioAppApiI
 {
@@ -11,6 +12,7 @@ export default class RenovatioAppApi implements RenovatioAppApiI
   protected configApi:ApiConfigs
   pages:Pages;
   languages:Languages;
+  settings:Settings
 
   constructor(protected config: RenovatioAppApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -18,6 +20,7 @@ export default class RenovatioAppApi implements RenovatioAppApiI
 
     this.pages = new Pages(this.client)
     this.languages = new Languages(this.client)
+    this.settings = new Settings(this.client)
   }
 
   _initClient(): Axios {

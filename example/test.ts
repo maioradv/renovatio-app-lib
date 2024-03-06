@@ -5,7 +5,7 @@ const api = renovatioAppApi({
   version:ApiVersion.March24
 })
 
-api.pages.create({
+/*api.pages.create({
   formatId:1,
   title:'test title',
   description:'test description',
@@ -31,18 +31,18 @@ api.pages.create({
       locale:'it'
     }
   ]
-}).then(v => console.log(v)).catch(e => console.log(e))
+}).then(v => console.log(v)).catch(e => console.log(e))*/
 
-api.languages.findAll().then(v => console.log(v))
+api.settings.findAll().then(v => console.log(v))
 
-api.pages.findAll({
+/*api.pages.findAll({
   where:{
     id:[4,2],
   },
   sorting:{
     id:'desc'
   }
-}).then(v => console.log(v))
+}).then(v => console.log(v))*/
 
 /*api.pages.findOne(1).then(v => console.log(v.slug))
 
