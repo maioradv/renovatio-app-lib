@@ -19,7 +19,8 @@ export default class RenovatioAppApi implements IRenovatioAppApi
 
   _initClient(): Axios {
     axios.defaults.baseURL = 'http://' + this.configApi.host;
-    axios.defaults.headers.common[RenovatioHeader.AccessToken] = 'AUTH TOKEN';
+    axios.defaults.headers.common[RenovatioHeader.Authorization] = 'Bearer ';
+    axios.defaults.headers.common[RenovatioHeader.ApiVersion] = this.configApi.version
     return axios
   }
 

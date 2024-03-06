@@ -2,7 +2,7 @@ import renovatioAppApi, { ApiVersion } from "../src";
 
 const api = renovatioAppApi({
   host:'localhost:3000',
-  version:ApiVersion.v1
+  version:ApiVersion.March24
 })
 
 api.pages.create({
