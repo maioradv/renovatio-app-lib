@@ -1,5 +1,5 @@
-import { DefaultClausesDto, NumberClause, StringClause } from "../core/dto/clauses";
-import { Sorting, SortingDto } from "../core/dto/sorting";
+import { NumberClause, StringClause } from "../core/dto/clauses";
+import { Sorting } from "../core/dto/sorting";
 import { QueryParamsDto, SortingParamsDto, WhereClausesDto } from "../core/utils/queryParams";
 import { Metafield, Translation, WithRequired } from "../types";
 
