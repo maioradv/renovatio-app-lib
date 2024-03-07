@@ -2,6 +2,7 @@ export type NumberClause = number | number[] | undefined
 export type StringClause = string | string[] | undefined
 export type DateClause = number | string | Date | undefined
 export type BooleanClause = boolean | undefined
+export type EnumClause<T> = T | T[] | undefined
 
 export type ClausesDto = Record<string,NumberClause|StringClause|DateClause|BooleanClause>
 

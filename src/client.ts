@@ -7,6 +7,7 @@ import Languages from "./languages";
 import Settings from "./settings";
 import Formats from "./formats";
 import Pageblocks from "./pageblocks";
+import Layouts from "./layouts";
 
 export default class RenovatioAppApi implements RenovatioAppApiI
 {
@@ -17,6 +18,7 @@ export default class RenovatioAppApi implements RenovatioAppApiI
   settings:Settings;
   formats:Formats;
   pageblocks:Pageblocks;
+  layouts:Layouts;
 
   constructor(protected config: RenovatioAppApiConfigs) {
     this.configApi = validateConfigs(this.config)
@@ -27,6 +29,7 @@ export default class RenovatioAppApi implements RenovatioAppApiI
     this.settings = new Settings(this.client)
     this.formats = new Formats(this.client)
     this.pageblocks = new Pageblocks(this.client)
+    this.layouts = new Layouts(this.client)
   }
 
   protected _initClient(): Axios {
