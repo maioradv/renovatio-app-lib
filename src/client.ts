@@ -36,6 +36,7 @@ export default class RenovatioAppApi implements RenovatioAppApiI
     axios.defaults.baseURL = 'http://' + this.configApi.host;
     axios.defaults.headers.common[RenovatioHeader.Authorization] = 'Bearer ';
     axios.defaults.headers.common[RenovatioHeader.ApiVersion] = this.configApi.version
+    axios.defaults.headers.common['Content-Type'] = 'application/json'
     return axios
   }
 

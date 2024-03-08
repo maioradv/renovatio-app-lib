@@ -33,7 +33,7 @@ const api = renovatioAppApi({
   ]
 }).then(v => console.log(v)).catch(e => console.log(e))*/
 
-api.settings.findAll().then(v => console.log(v))
+api.pages.graphql().then(v => console.log(v.data.pages.nodes))
 
 /*api.pages.findAll({
   pagination: {

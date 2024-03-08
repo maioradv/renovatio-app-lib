@@ -23,4 +23,28 @@ export default class Pages extends RestApiModule implements RestApiModuleI {
   remove(id:number): Promise<Page> {
     return this._call<Page>('delete',`/pages/${id}`)
   }
+
+  graphql() {
+    const params = {
+      query: `query page($limit: Int){
+        pages(limit: $limit){
+          nodes {
+            id
+            slug
+            title
+          }
+          meta {
+            startCursor
+            endCursor
+            hasNextPage
+            hasPreviousPage
+          }
+        }
+      }`,
+      variables: {
+        limit: undefined,
+      }
+    }
+    return this._call<any>('post',`/graphql`,params)
+  }
 }
