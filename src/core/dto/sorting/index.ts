@@ -9,6 +9,7 @@ export type DefaultSortingDto = {
 }
 
 export function sorting(args:SortingDto): Record<string,any> {
+  if(!args) return {}
   return {
     sorting: JSON.stringify(args)
   }
