@@ -1,12 +1,12 @@
 import { PaginatedGQLQueryDto } from "../core/dto/pagination";
 import { Resolvers } from "../core/types/resolver";
 
-export const pagesResolvers:Resolvers<['pages'],['removePage']> = {
+export const settingsResolvers:Resolvers<['settings'],['removeSetting']> = {
   query:{
-    pages:{
-      name:'pages',
-      query: `query PageList($limit: Int, $after: Int, $before: Int){
-        pages(limit: $limit, after: $after, before: $before){
+    settings:{
+      name:'settings',
+      query: `query SettingList($limit: Int, $after: Int, $before: Int){
+        settings(limit: $limit, after: $after, before: $before){
           edges {
             node {
               id
@@ -15,15 +15,9 @@ export const pagesResolvers:Resolvers<['pages'],['removePage']> = {
           }
           nodes {
             id
-            formatId
-            slug
-            title
+            name
             description
-            published
-            metafields {
-              key
-              value
-            }
+            value        
             translations {
               key
               value
@@ -43,10 +37,10 @@ export const pagesResolvers:Resolvers<['pages'],['removePage']> = {
     },
   },
   mutation:{
-    removePage:{
-      name:'removePage',
-      query: `mutation PageDelete($id: [Int!]!){
-        removePage(id: $id) {
+    removeSetting:{
+      name:'removeSetting',
+      query: `mutation SettingDelete($id: [Int!]!){
+        removeSetting(id: $id) {
           count
         }
       }`,
@@ -54,4 +48,4 @@ export const pagesResolvers:Resolvers<['pages'],['removePage']> = {
   }
 }
 
-export type QueryPageGQLDto = PaginatedGQLQueryDto
+export type QuerySettingGQLDto = PaginatedGQLQueryDto

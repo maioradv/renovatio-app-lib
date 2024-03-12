@@ -1,4 +1,4 @@
-import { NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
+import { BooleanClause, NumberClause, StringClause, WhereClausesDto } from "../core/dto/clauses";
 import { Sorting, SortingParamsDto } from "../core/dto/sorting";
 import { QueryParamsDto } from "../core/utils/queryParams";
 import { Metafield, Translation, WithRequired } from "../types";
@@ -10,6 +10,7 @@ export type Page = {
   title: string;
   description: string|null;
   metafields: Metafield[];
+  published:boolean;
   translations: Translation[];
   createdAt: Date;
   updatedAt: Date;
@@ -30,6 +31,7 @@ export type ClausesPageDto = WhereClausesDto<{
   title?:StringClause,
   description?:StringClause,
   formatId?:NumberClause,
+  published?:BooleanClause,
 }>
 
 export type QueryPageDto = QueryParamsDto<SortingPageDto,ClausesPageDto>
