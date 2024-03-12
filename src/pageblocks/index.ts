@@ -1,9 +1,11 @@
-import { PaginatedDto } from "../core/dto/pagination";
+import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
+import { RemoveGQL } from "../core/model/remove-gql.response";
 import { queryParams } from "../core/utils/queryParams";
-import { RestApiModuleI, ApiModule } from "../model";
+import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
+import { QueryPageblockGQLDto, pageblocksResolvers } from "./graphql";
 import { Pageblock, CreatePageblock, UpdatePageblock, QueryPageblockDto } from "./types";
 
-export default class Pageblocks extends ApiModule implements RestApiModuleI {
+export default class Pageblocks extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(data:CreatePageblock): Promise<Pageblock> {
     return this._call<Pageblock>('post','/pageblocks',data)
   }
@@ -22,5 +24,15 @@ export default class Pageblocks extends ApiModule implements RestApiModuleI {
 
   remove(id:number): Promise<Pageblock> {
     return this._call<Pageblock>('delete',`/pageblocks/${id}`)
+  }
+
+  list(args:QueryPageblockGQLDto = {}): Promise<PaginatedGQL<Pageblock>> {
+    return this._graphql<PaginatedGQL<Pageblock>>(pageblocksResolvers.query.pageblocks,args)
+  }
+
+  removeMany(id:number|number[]): Promise<RemoveGQL> {
+    return this._graphql<RemoveGQL>(pageblocksResolvers.mutation.removePageblock,{
+      id
+    })
   }
 }
