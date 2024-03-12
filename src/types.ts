@@ -14,8 +14,6 @@ export enum RenovatioHeader {
   ApiVersion = 'X-Api-Version'
 }
 
-export type WithRequired<T, K extends keyof T> = T & { [P in K]-?: T[P] }
-
 export type Metafield = {
   key:string,
   value:string
@@ -25,3 +23,4 @@ export type Translation = {
   value:string,
   locale:string
 }
+export type WithRequired<T, K extends keyof T> = T & { [P in K]-?: T[P] }

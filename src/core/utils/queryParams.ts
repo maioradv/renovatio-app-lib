@@ -1,10 +1,6 @@
-import { ClausesDto, DefaultClausesDto, where } from "../dto/clauses"
+import { ClausesDto, where } from "../dto/clauses"
 import { PaginatedQueryDto, pagination } from "../dto/pagination"
-import { DefaultSortingDto, SortingDto, sorting } from "../dto/sorting"
-
-export type SortingParamsDto<T extends SortingDto> = T & DefaultSortingDto
-
-export type WhereClausesDto<T extends ClausesDto> = T & DefaultClausesDto
+import { SortingDto, sorting } from "../dto/sorting"
 
 export type QueryParamsDto<T extends SortingDto,H extends ClausesDto> = {
   pagination?:PaginatedQueryDto,

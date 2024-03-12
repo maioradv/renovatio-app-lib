@@ -1,9 +1,9 @@
 import { PaginatedDto } from "../core/dto/pagination";
 import { queryParams } from "../core/utils/queryParams";
-import { RestApiModuleI, RestApiModule } from "../model";
+import { RestApiModuleI, ApiModule } from "../model";
 import { Format, CreateFormat, UpdateFormat, QueryFormatDto } from "./types";
 
-export default class Formats extends RestApiModule implements RestApiModuleI {
+export default class Formats extends ApiModule implements RestApiModuleI {
   create(data:CreateFormat): Promise<Format> {
     return this._call<Format>('post','/formats',data)
   }

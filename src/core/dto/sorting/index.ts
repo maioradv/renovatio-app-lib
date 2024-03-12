@@ -14,3 +14,5 @@ export function sorting(args:SortingDto): Record<string,any> {
     sorting: JSON.stringify(args)
   }
 }
+
+export type SortingParamsDto<T extends SortingDto> = T & DefaultSortingDto

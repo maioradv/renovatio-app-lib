@@ -1,9 +1,11 @@
-import { PaginatedDto } from "../core/dto/pagination";
+import { PaginatedDto, PaginatedGQL } from "../core/dto/pagination";
+import { RemoveGQL } from "../core/model/remove-gql.response";
 import { queryParams } from "../core/utils/queryParams";
-import { RestApiModuleI, RestApiModule } from "../model";
+import { RestApiModuleI, ApiModule, GraphApiModuleI } from "../model";
+import { QueryPageGQLDto, pagesResolvers } from "./graphql";
 import { Page, CreatePage, UpdatePage, QueryPageDto } from "./types";
 
-export default class Pages extends RestApiModule implements RestApiModuleI {
+export default class Pages extends ApiModule implements RestApiModuleI, GraphApiModuleI {
   create(data:CreatePage): Promise<Page> {
     return this._call<Page>('post','/pages',data)
   }
@@ -24,27 +26,13 @@ export default class Pages extends RestApiModule implements RestApiModuleI {
     return this._call<Page>('delete',`/pages/${id}`)
   }
 
-  graphql() {
-    const params = {
-      query: `query page($limit: Int){
-        pages(limit: $limit){
-          nodes {
-            id
-            slug
-            title
-          }
-          meta {
-            startCursor
-            endCursor
-            hasNextPage
-            hasPreviousPage
-          }
-        }
-      }`,
-      variables: {
-        limit: undefined,
-      }
-    }
-    return this._call<any>('post',`/graphql`,params)
+  list(args:QueryPageGQLDto = {}): Promise<PaginatedGQL<Page>> {
+    return this._graphql<PaginatedGQL<Page>>(pagesResolvers.query.pages,args)
+  }
+
+  removeMany(id:number|number[]): Promise<RemoveGQL> {
+    return this._graphql<RemoveGQL>(pagesResolvers.mutation.removePage,{
+      id
+    })
   }
 }

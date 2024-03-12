@@ -12,9 +12,17 @@ export class RestApiError extends RenovatioError {
   constructor(e:Error|AxiosError) {
     let message = e.message
     if(e instanceof AxiosError) {
-      console.info(e?.response?.data)
-      message = e?.response?.data ? `${e.response.data?.message} [${e.response.data?.code}]` : e.message
+      message = e?.response?.data ? `${e.response.data?.message} [${e.response.data?.statusCode}]` : e.message
     }
     super(`Rest Api Error: ${message}`)
+  }
+}
+export class GraphApiError extends RenovatioError {
+  constructor(e:Error|AxiosError) {
+    let message = e.message
+    if(e instanceof AxiosError) {
+      message = e?.response?.data ? `${e.response.data?.message} [${e.response.data?.statusCode}]` : e.message
+    }
+    super(`GraphQL Api Error: ${message}`)
   }
 }

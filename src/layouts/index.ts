@@ -1,9 +1,9 @@
 import { PaginatedDto } from "../core/dto/pagination";
 import { queryParams } from "../core/utils/queryParams";
-import { RestApiModuleI, RestApiModule } from "../model";
+import { RestApiModuleI, ApiModule } from "../model";
 import { Layout, CreateLayout, UpdateLayout, QueryLayoutDto } from "./types";
 
-export default class Layouts extends RestApiModule implements RestApiModuleI {
+export default class Layouts extends ApiModule implements RestApiModuleI {
   create(data:CreateLayout): Promise<Layout> {
     return this._call<Layout>('post','/layouts',data)
   }

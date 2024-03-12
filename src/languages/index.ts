@@ -1,9 +1,9 @@
 import { PaginatedDto } from "../core/dto/pagination";
 import { queryParams } from "../core/utils/queryParams";
-import { RestApiModuleI, RestApiModule } from "../model";
+import { RestApiModuleI, ApiModule } from "../model";
 import { Language, CreateLanguage, UpdateLanguage, QueryLanguageDto } from "./types";
 
-export default class Languages extends RestApiModule implements RestApiModuleI {
+export default class Languages extends ApiModule implements RestApiModuleI {
   create(data:CreateLanguage): Promise<Language> {
     return this._call<Language>('post','/languages',data)
   }
